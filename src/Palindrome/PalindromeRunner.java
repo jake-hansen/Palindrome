@@ -9,24 +9,27 @@ import java.util.Scanner;
 
 public class PalindromeRunner {
     public static void main (String [] args){
-        String Continue, userStringCopy;
+
+        String Continue, userString, userStringCopy, userStringBackwards;
         Scanner inputContinue = new Scanner(System.in);
         Scanner inputUserString = new Scanner(System.in);
-        BackwardsString BS1 = new BackwardsString();
         do {
             System.out.println ("Please enter a String...");
-            BS1.stringInput = inputUserString.nextLine();
-            userStringCopy = BS1.stringInput;
-            BS1.stringInput = BS1.stringInput.toLowerCase().replaceAll("\\s+", "");
-            BS1.toBackwards();
+            userString = inputUserString.nextLine();
 
-            if (BS1.stringInput.equals(BS1.stringOutput)){
+            userStringCopy = userString;
+
+            userString = userString.toLowerCase().replaceAll("\\s+", "");
+
+            userStringBackwards = BackwardsString.toBackwards(userString);
+
+            if (userStringBackwards.equals(userString)){
                 System.out.println ("\"" + userStringCopy + "\"" + " is a Palindrome!" );
             }
             else System.out.println ("\"" + userStringCopy + "\"" + " is NOT a Palindrome!" );
 
-            BS1.stringOutput = ("");
-
+            userStringBackwards = ("");
+            
             do {
                 System.out.println ("Do you want to check another String? (Y/N)");
                 Continue = inputContinue.nextLine();
